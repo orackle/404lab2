@@ -8,6 +8,7 @@ HOST = ""
 PORT = 8001
 BUFFER_SIZE = 1024
 
+# helper function - lab ta code
 def handle_echo(addr, conn):
     print("Connected by", addr)
     full_data = conn.recv(BUFFER_SIZE)
@@ -27,6 +28,7 @@ def main():
         s.listen(2)
 
         #continuously listen for connections
+        # from lab ta code
         while True:
             conn, addr = s.accept()
             p = Process(target=handle_echo, args=(addr, conn))
