@@ -18,7 +18,8 @@ def get_remote_ip(host):
 	print (f'Ip address of {host} is {remote_ip}')
 	return remote_ip
 
-# send data to google and send response to client
+# send data to google and send response to client, helper function
+# from code shown in lab 
 def handle_request(conn, addr, proxy_end):
 	send_full_data = conn.recv(BUFFER_SIZE)
 	print(f'Sending received data {send_full_data} to google')
@@ -47,6 +48,7 @@ def main():
 
 				proxy_end.connect((remote_ip, port))
 				# allow connection by many clients
+				# from code shown in lab
 				p = Process(target=handle_request, args=(conn, addr, proxy_end))
 				p.daemon = True
 				p.start()
